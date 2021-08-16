@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  find_md5sum:
+    runs-on: ubuntu-latest
+    name: local-test-with-act
+    steps:
+      - name: Find md5sum
+        id: find_md5sum
+        uses: vikas027/github-action-echo@main # or vikas027/github-action-echo@v1
+        with:
+          find-md5sum: HelloVikas
+          short-md5sum: 'false'
+      - name: Get the md5sum
+        run: echo "The md5sum is ${{ steps.find_md5sum.outputs.md5sum_result }} ${{ steps.find_md5sum.outputs.md5sum_result_short }}"

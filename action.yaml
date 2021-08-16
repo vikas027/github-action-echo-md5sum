@@ -1,0 +1,22 @@
+---
+name: "Find md5sum of a variable"
+description: "Pass a variable and get the md5sum"
+inputs:
+  find_md5sum:
+    description: "Pass a variable and get the md5sum"
+    required: true
+    default: 'hello'
+  find_md5sum_short:
+    description: "Short md5sum of the variable"
+    required: false
+    default: 'false'
+outputs:
+  md5sum_var:
+    description: "md5sum of the variable"
+  md5sum_var_short:
+    description: "short md5sum of the variable"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.find_md5sum }}
