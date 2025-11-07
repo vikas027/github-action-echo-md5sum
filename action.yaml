@@ -16,7 +16,5 @@ outputs:
   md5sum_var_short:
     description: "short md5sum of the variable"
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.find_md5sum }}
+  using: "node24"
+  main: "index.js"

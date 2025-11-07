@@ -1,0 +1,21 @@
+---
+name: Test GitHub Action
+on: [push]
+
+jobs:
+  find_md5sum:
+    runs-on: ubuntu-latest
+    name: md5sum-action-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Find md5sum
+        id: find_md5sum
+        uses: ./
+        with:
+          find_md5sum: HelloVikas
+          find_md5sum_short: 'false'
+
+      - name: Get the md5sum
+        run: echo "The md5sum is ${{ steps.find_md5sum.outputs.md5sum_var }} ${{ steps.find_md5sum.outputs.md5sum_var_short }}"
